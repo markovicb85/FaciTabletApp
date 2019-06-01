@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         showData = (TextView) findViewById(R.id.tv_show_data);
         startConection = (Button) findViewById(R.id.btn_start_connection);
         stopConection = (Button) findViewById(R.id.btn_stop_connection);
 
-        super.onCreate(savedInstanceState);
     }
 
     public void startConnection(View view) {

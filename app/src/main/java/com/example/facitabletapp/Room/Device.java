@@ -1,8 +1,7 @@
 package com.example.facitabletapp.Room;
 
-
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "device_table")
 public class Device {
@@ -12,9 +11,9 @@ public class Device {
 
     private String deviceName;
 
-    private int status;
+    private boolean status;
 
-    public Device(String deviceName, int status) {
+    public Device(String deviceName, boolean status) {
         this.deviceName = deviceName;
         this.status = status;
     }
@@ -27,7 +26,11 @@ public class Device {
         return deviceName;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
+    }
+
+    public int getDeviceID() {
+        return deviceID;
     }
 }

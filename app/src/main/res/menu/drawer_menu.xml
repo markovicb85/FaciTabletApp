@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ShowIn="navigation_view" >
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/alarm_list"
+            android:icon="@drawable/ic_alarm"
+            android:title="@string/alarms" />
+        <item android:id="@+id/device_list"
+            android:icon="@drawable/ic_format"
+            android:title="@string/device_list" />
+        <item android:id="@+id/info"
+            android:icon="@drawable/ic_info"
+            android:title="@string/info" />
+    </group>
+
+    <item android:title="Tools">
+        <menu>
+            <item android:id="@+id/add_device"
+                android:icon="@drawable/ic_add"
+                android:title="@string/add_device" />
+            <item android:id="@+id/delete_all_alarms"
+                android:icon="@drawable/ic_delete"
+                android:title="@string/delete_all_alarms" />
+        </menu>
+    </item>
+
+</menu>

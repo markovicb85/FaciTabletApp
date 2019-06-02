@@ -1,15 +1,13 @@
 package com.example.facitabletapp.Repository;
 
 import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-
 import com.example.facitabletapp.Room.Device;
 import com.example.facitabletapp.Room.FaciDB;
 import com.example.facitabletapp.Room.DeviceDao;
-
 import java.util.List;
 
-import androidx.lifecycle.LiveData;
 
 public class DeviceRepository {
 

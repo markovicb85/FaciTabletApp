@@ -6,4 +6,10 @@
         android:icon="@drawable/ic_add"
         android:title="Add"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/delete_all_device"
+        android:icon="@drawable/ic_delete"
+        android:title="@string/delete_all_device"
+        app:showAsAction="ifRoom" />
 </menu>

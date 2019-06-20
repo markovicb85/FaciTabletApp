@@ -42,6 +42,10 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.DeviceHold
         notifyDataSetChanged();
     }
 
+    public Device getDeviceAt(int position) {
+        return devices.get(position);
+    }
+
     class DeviceHolder extends RecyclerView.ViewHolder {
         private TextView tvDeviceName;
         private CheckBox cbDeviceStatus;

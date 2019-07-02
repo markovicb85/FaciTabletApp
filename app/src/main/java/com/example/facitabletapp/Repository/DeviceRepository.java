@@ -41,57 +41,57 @@ public class DeviceRepository {
     }
 
     private static class InsertDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
-        private DeviceDao noteDao;
+        private DeviceDao deviceDao;
 
         private InsertDeviceAsyncTask(DeviceDao noteDao) {
-            this.noteDao = noteDao;
+            this.deviceDao = noteDao;
         }
 
         @Override
         protected Void doInBackground(Device... device) {
-            noteDao.insert(device[0]);
+            deviceDao.insert(device[0]);
             return null;
         }
     }
 
     private static class UpdateDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
-        private DeviceDao noteDao;
+        private DeviceDao deviceDao;
 
         private UpdateDeviceAsyncTask(DeviceDao noteDao) {
-            this.noteDao = noteDao;
+            this.deviceDao = noteDao;
         }
 
         @Override
         protected Void doInBackground(Device... device) {
-            noteDao.update(device[0]);
+            deviceDao.update(device[0]);
             return null;
         }
     }
 
     private static class DeleteDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
-        private DeviceDao noteDao;
+        private DeviceDao deviceDao;
 
         private DeleteDeviceAsyncTask(DeviceDao noteDao) {
-            this.noteDao = noteDao;
+            this.deviceDao = deviceDao;
         }
 
         @Override
         protected Void doInBackground(Device... device) {
-            noteDao.delete(device[0]);
+            deviceDao.delete(device[0]);
             return null;
         }
     }
 
     private static class DeleteAllDeviceAsyncTask extends AsyncTask<Void, Void, Void> {
-        private DeviceDao noteDao;
+        private DeviceDao deviceDao;
 
         private DeleteAllDeviceAsyncTask(DeviceDao noteDao) {
-            this.noteDao = noteDao;
+            this.deviceDao = noteDao;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            noteDao.deleteAllDevices();
+            deviceDao.deleteAllDevices();
             return null;
         }
     }

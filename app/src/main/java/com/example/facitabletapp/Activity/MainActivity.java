@@ -2,6 +2,7 @@ package com.example.facitabletapp.Activity;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,11 +17,14 @@ import com.example.facitabletapp.Fragment.AlarmListFragment;
 import com.example.facitabletapp.Fragment.DeviceListFragment;
 import com.example.facitabletapp.Fragment.InfoFragment;
 import com.example.facitabletapp.R;
+import com.example.facitabletapp.Tools.UDPClient;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    private UDPClient runnable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new AlarmListFragment()).commit();
             navigationView.setCheckedItem(R.id.alarm_list);
         }
+
+
     }
 
     @Override

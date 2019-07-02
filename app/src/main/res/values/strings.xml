@@ -17,4 +17,5 @@
     <string name="device_list">Device list</string>
     <string name="alarms">Alarms</string>
     <string name="delete_all_device">Delete all device</string>
+    <string name="alarm">Alarm</string>
 </resources>

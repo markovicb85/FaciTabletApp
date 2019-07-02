@@ -1,14 +1,16 @@
 package com.example.facitabletapp.Tools;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.TextView;
+
+import com.example.facitabletapp.Activity.MainActivity;
+import com.example.facitabletapp.Room.Alarm;
+import com.example.facitabletapp.ViewModel.AlarmViewModel;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
 
 import static android.content.ContentValues.TAG;
 
@@ -21,11 +23,11 @@ public class UDPClient implements Runnable {
     private byte[] key = new byte[4];
     private byte[] data = new byte[80];
     private int j = 0;
+    private Alarm alarm;
+    private AlarmViewModel alarmViewModel;
 
-    private TextView result;
-
-    public UDPClient(TextView result) {
-        this.result = result;
+    public UDPClient(AlarmViewModel alarmViewModel) {
+        this.alarmViewModel = alarmViewModel;
     }
 
     public void run() {
@@ -63,7 +65,10 @@ public class UDPClient implements Runnable {
                 threadHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        result.setText(lastMessage);
+                        alarm = new Alarm(lastMessage);
+                        if (alarm != null){
+                            alarmViewModel.insert(alarm);
+                        }
                     }
                 });
 

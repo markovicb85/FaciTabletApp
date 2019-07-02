@@ -5,12 +5,13 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Device.class}, version = 1)
+@Database(entities = {Device.class, Alarm.class}, version = 2, exportSchema = false)
 public abstract class FaciDB extends RoomDatabase {
 
     private static FaciDB instance;
 
     public abstract DeviceDao deviceDao();
+    public abstract AlarmDao alarmDao();
 
     public static synchronized FaciDB getInstance(Context context) {
         if (instance == null) {

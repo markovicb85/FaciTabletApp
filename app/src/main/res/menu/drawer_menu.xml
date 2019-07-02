@@ -10,19 +10,30 @@
         <item android:id="@+id/device_list"
             android:icon="@drawable/ic_format"
             android:title="@string/device_list" />
-        <item android:id="@+id/info"
-            android:icon="@drawable/ic_info"
-            android:title="@string/info" />
+        <item android:id="@+id/add_device"
+            android:icon="@drawable/ic_add"
+            android:title="@string/add_device" />
     </group>
 
     <item android:title="Tools">
         <menu>
-            <item android:id="@+id/add_device"
-                android:icon="@drawable/ic_add"
-                android:title="@string/add_device" />
             <item android:id="@+id/delete_all_alarms"
                 android:icon="@drawable/ic_delete"
                 android:title="@string/delete_all_alarms" />
+            <item android:id="@+id/delete_all_device"
+                android:icon="@drawable/ic_delete"
+                android:title="@string/delete_all_alarms" />
+
+        </menu>
+    </item>
+    <item android:title="Info">
+        <menu>
+            <item android:id="@+id/about"
+                android:icon="@drawable/ic_info"
+                android:title="@string/info" />
+            <item android:id="@+id/contact"
+                android:icon="@drawable/ic_info"
+                android:title="@string/info" />
         </menu>
     </item>
 

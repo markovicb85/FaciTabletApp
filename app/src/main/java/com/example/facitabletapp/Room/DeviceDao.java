@@ -26,4 +26,7 @@ public interface DeviceDao {
 
     @Query("SELECT * FROM device_table ORDER BY deviceID")
     LiveData<List<Device>> getAllDevices();
+
+    @Query("SELECT EXISTS (SELECT * FROM device_table WHERE deviceName = :name)")
+    Integer alarmExist(String name);
 }

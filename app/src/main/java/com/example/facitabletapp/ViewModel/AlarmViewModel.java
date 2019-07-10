@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+import android.text.BoringLayout;
 
 import com.example.facitabletapp.Repository.AlarmRepository;
 import com.example.facitabletapp.Repository.DeviceRepository;
@@ -41,5 +42,13 @@ public class AlarmViewModel extends AndroidViewModel {
 
     public LiveData<List<Alarm>> getAllAlarms(){
         return allAlarms;
+    }
+
+    public Boolean alarmExist(String alarmName){
+        return repository.alarmExist(alarmName);
+    }
+
+    public Boolean checkAlarmStatus(String alarmName, int status){
+        return repository.checkAlarmStatus(alarmName, status);
     }
 }

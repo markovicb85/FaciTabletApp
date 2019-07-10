@@ -40,11 +40,18 @@ public class DeviceRepository {
         return allDevice;
     }
 
+    public Boolean deviceExist(String deviceName) {
+        if(deviceDao.alarmExist(deviceName) > 0){
+            return true;
+        }
+        return false;
+    }
+
     private static class InsertDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
         private DeviceDao deviceDao;
 
-        private InsertDeviceAsyncTask(DeviceDao noteDao) {
-            this.deviceDao = noteDao;
+        private InsertDeviceAsyncTask(DeviceDao deviceDao) {
+            this.deviceDao = deviceDao;
         }
 
         @Override
@@ -57,8 +64,8 @@ public class DeviceRepository {
     private static class UpdateDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
         private DeviceDao deviceDao;
 
-        private UpdateDeviceAsyncTask(DeviceDao noteDao) {
-            this.deviceDao = noteDao;
+        private UpdateDeviceAsyncTask(DeviceDao deviceDao) {
+            this.deviceDao = deviceDao;
         }
 
         @Override
@@ -71,7 +78,7 @@ public class DeviceRepository {
     private static class DeleteDeviceAsyncTask extends AsyncTask<Device, Void, Void> {
         private DeviceDao deviceDao;
 
-        private DeleteDeviceAsyncTask(DeviceDao noteDao) {
+        private DeleteDeviceAsyncTask(DeviceDao deviceDao) {
             this.deviceDao = deviceDao;
         }
 
@@ -85,8 +92,8 @@ public class DeviceRepository {
     private static class DeleteAllDeviceAsyncTask extends AsyncTask<Void, Void, Void> {
         private DeviceDao deviceDao;
 
-        private DeleteAllDeviceAsyncTask(DeviceDao noteDao) {
-            this.deviceDao = noteDao;
+        private DeleteAllDeviceAsyncTask(DeviceDao deviceDao) {
+            this.deviceDao = deviceDao;
         }
 
         @Override

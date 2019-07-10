@@ -38,4 +38,8 @@ public class DeviceViewModel extends AndroidViewModel {
     public LiveData<List<Device>> getAllDevices(){
         return allDevices;
     }
+
+    public Boolean deviceExist(String deviceName){
+        return repository.deviceExist(deviceName);
+    }
 }

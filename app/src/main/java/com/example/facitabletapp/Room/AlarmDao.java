@@ -27,4 +27,10 @@ public interface AlarmDao {
 
     @Query("SELECT * FROM alarm_table ORDER BY alarmID")
     LiveData<List<Alarm>> getAllAlarms();
+
+    @Query("SELECT EXISTS (SELECT * FROM alarm_table WHERE alarmName = :name)")
+    Integer alarmExist(String name);
+
+    @Query("SELECT EXISTS (SELECT * FROM alarm_table WHERE alarmName = :name AND status = :status)")
+    Integer checkAlarmStatus(String name, int status);
 }

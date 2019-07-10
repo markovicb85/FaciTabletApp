@@ -2,7 +2,6 @@ package com.example.facitabletapp.Activity;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +13,10 @@ import android.view.MenuItem;
 
 import com.example.facitabletapp.Fragment.AddDeviceFragment;
 import com.example.facitabletapp.Fragment.AlarmListFragment;
+import com.example.facitabletapp.Fragment.ContactFragment;
 import com.example.facitabletapp.Fragment.DeviceListFragment;
-import com.example.facitabletapp.Fragment.InfoFragment;
+import com.example.facitabletapp.Fragment.AboutFragment;
+import com.example.facitabletapp.Fragment.SettingsFragment;
 import com.example.facitabletapp.R;
 import com.example.facitabletapp.Tools.UDPClient;
 
@@ -23,7 +24,7 @@ import com.example.facitabletapp.Tools.UDPClient;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    private UDPClient runnable;
+    public NavigationView navigationView;
 
 
     @Override
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new AlarmListFragment()).commit();
-            navigationView.setCheckedItem(R.id.alarm_list);
+                    new SettingsFragment()).commit();
+            navigationView.setCheckedItem(R.id.settings);
         }
 
 
@@ -63,13 +64,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DeviceListFragment()).commit();
                 break;
-            case R.id.info:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new InfoFragment()).commit();
-                break;
             case R.id.add_device:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AddDeviceFragment()).commit();
+                break;
+            case R.id.settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SettingsFragment()).commit();
+                break;
+            case R.id.about:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new AboutFragment()).commit();
+                break;
+            case R.id.contact:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ContactFragment()).commit();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

@@ -6,8 +6,6 @@ import android.os.AsyncTask;
 
 import com.example.facitabletapp.Room.Alarm;
 import com.example.facitabletapp.Room.AlarmDao;
-import com.example.facitabletapp.Room.Device;
-import com.example.facitabletapp.Room.DeviceDao;
 import com.example.facitabletapp.Room.FaciDB;
 
 import java.util.List;
@@ -42,6 +40,21 @@ public class AlarmRepository {
 
     public LiveData<List<Alarm>> getAllAlarms() {
         return allAlarms;
+    }
+
+    //TODO Ove dve metode proveriti da li blokiraju main thred
+    public Boolean checkAlarmStatus(String alarmName, int status) {
+        if(alarmDao.checkAlarmStatus(alarmName, status) > 0){
+            return false;
+        }
+        return true;
+    }
+
+    public Boolean alarmExist(String alarmName) {
+        if(alarmDao.alarmExist(alarmName) > 0){
+            return false;
+        }
+        return true;
     }
 
     private static class InsertAlarmAsyncTask extends AsyncTask<Alarm, Void, Void> {

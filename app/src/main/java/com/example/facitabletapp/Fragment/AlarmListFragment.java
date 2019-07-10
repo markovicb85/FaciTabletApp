@@ -96,7 +96,7 @@ public class AlarmListFragment extends Fragment {
     }
 
     public void startReading(AlarmViewModel alarmViewModel) {
-        runnable = new UDPClient(alarmViewModel);
+        runnable = new UDPClient(alarmViewModel, getContext());
         new Thread(runnable).start();
     }
 }

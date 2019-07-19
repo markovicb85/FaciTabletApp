@@ -26,6 +26,10 @@ public class AlarmRepository {
         new InsertAlarmAsyncTask(alarmDao).execute(alarm);
     }
 
+    public void deleteAlarm(Alarm alarm) {
+        new DeleteAlarmAsyncTask(alarmDao).execute(alarm);
+    }
+
     public void update(Alarm alarm) {
         new UpdateAlarmAsyncTask(alarmDao).execute(alarm);
     }
@@ -44,17 +48,18 @@ public class AlarmRepository {
 
     //TODO Ove dve metode proveriti da li blokiraju main thred
     public Boolean checkAlarmStatus(String alarmName, int status) {
-        if(alarmDao.checkAlarmStatus(alarmName, status) > 0){
+        if(alarmDao.checkAlarmStatus(alarmName, status) > 3){
+            return true;
+        }else {
             return false;
         }
-        return true;
     }
 
     public Boolean alarmExist(String alarmName) {
         if(alarmDao.alarmExist(alarmName) > 0){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private static class InsertAlarmAsyncTask extends AsyncTask<Alarm, Void, Void> {
@@ -71,6 +76,20 @@ public class AlarmRepository {
         }
     }
 
+    private static class DeleteAlarmAsyncTask extends AsyncTask<Alarm, Void, Void> {
+        private AlarmDao alarmDao;
+
+        private DeleteAlarmAsyncTask(AlarmDao alarmDao) {
+            this.alarmDao = alarmDao;
+        }
+
+        @Override
+        protected Void doInBackground(Alarm... alarm) {
+            alarmDao.deleteAlarm(alarm[0].getAlarmName());
+            return null;
+        }
+    }
+
     private static class UpdateAlarmAsyncTask extends AsyncTask<Alarm, Void, Void> {
         private AlarmDao alarmDao;
 
@@ -81,20 +100,6 @@ public class AlarmRepository {
         @Override
         protected Void doInBackground(Alarm... alarm) {
             alarmDao.update(alarm[0]);
-            return null;
-        }
-    }
-
-    private static class DeleteAlarmAsyncTask extends AsyncTask<Alarm, Void, Void> {
-        private AlarmDao alarmDao;
-
-        private DeleteAlarmAsyncTask(AlarmDao alarmDao) {
-            this.alarmDao = alarmDao;
-        }
-
-        @Override
-        protected Void doInBackground(Alarm... alarm) {
-            alarmDao.delete(alarm[0]);
             return null;
         }
     }

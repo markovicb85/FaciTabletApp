@@ -120,12 +120,12 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <Button
-                android:id="@+id/btn_2"
+                android:id="@+id/btn_delete_all_alarm"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_margin="16dp"
                 android:layout_weight="0.2"
-                android:text="@string/button_2"
+                android:text="Delete All"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
 
             <Button

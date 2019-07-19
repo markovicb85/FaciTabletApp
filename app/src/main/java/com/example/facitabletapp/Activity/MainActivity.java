@@ -1,12 +1,14 @@
 package com.example.facitabletapp.Activity;
 
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,6 +28,7 @@ import com.example.facitabletapp.Fragment.MainAlarmFragment;
 import com.example.facitabletapp.Fragment.SettingsFragment;
 import com.example.facitabletapp.R;
 import com.example.facitabletapp.Tools.UDPClient;
+import com.example.facitabletapp.ViewModel.AlarmViewModel;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,9 +37,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public NavigationView navigationView;
     public Button btnStart;
     public Button btnStop;
+    private Button btnDeleteAllAlarms;
     private TextView roomName;
 
     public SharedPreferences sharedPref;
+    private AlarmViewModel alarmViewModel;
 
 
     @Override
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         btnStart = findViewById(R.id.btn_start);
         btnStop = findViewById(R.id.btn_stop);
+        btnDeleteAllAlarms = findViewById(R.id.btn_delete_all_alarm);
         roomName = findViewById(R.id.tv_info_room_name);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -84,6 +90,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FirstActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnDeleteAllAlarms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarmViewModel =  ViewModelProviders.of(MainActivity.this).get(AlarmViewModel.class);
+                alarmViewModel.deleteAllAlarms();
             }
         });
     }

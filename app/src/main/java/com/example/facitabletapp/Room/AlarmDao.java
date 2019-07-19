@@ -33,4 +33,7 @@ public interface AlarmDao {
 
     @Query("SELECT EXISTS (SELECT * FROM alarm_table WHERE alarmName = :name AND status = :status)")
     Integer checkAlarmStatus(String name, int status);
+
+    @Query("DELETE FROM alarm_table WHERE alarmName = :name")
+    void deleteAlarm(String name);
 }

@@ -33,7 +33,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AlarmHolder>
         holder.tvAlarmStatus.setText(Integer.toString(currentAlarm.getStatus()));
         holder.tvAlarmDescription.setText(currentAlarm.getDescription());
         holder.tvAlarmDateTime.setText((CharSequence) currentAlarm.getCurrentTime());
-        if(currentAlarm.getStatus() > 4){
+        if(currentAlarm.getStatus() > 3){
             holder.ivAlarmIcon.setBackgroundColor(Color.RED);
         }else if(currentAlarm.getStatus() > 7){
             holder.ivAlarmIcon.setBackgroundColor(Color.BLUE);

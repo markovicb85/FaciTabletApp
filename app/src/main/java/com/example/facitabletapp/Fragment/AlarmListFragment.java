@@ -56,8 +56,10 @@ public class AlarmListFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Alarm> alarms) {
                 newAlarmsList = new ArrayList<>(alarms);
-                newAlarmsList.remove(0);
-                alarmAdapter.setAlarms(newAlarmsList);
+                if(!newAlarmsList.isEmpty()){
+                    newAlarmsList.remove(0);
+                    alarmAdapter.setAlarms(newAlarmsList);
+                }
             }
         });
 
@@ -75,7 +77,7 @@ public class AlarmListFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerView);
 
-        startReading(alarmViewModel);
+        //startReading(alarmViewModel);
 
         return rootView;
     }

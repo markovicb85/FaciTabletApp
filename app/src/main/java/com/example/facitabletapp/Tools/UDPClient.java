@@ -60,7 +60,7 @@ public class UDPClient implements Runnable {
         DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
 
         Globals globals = Globals.getInstance();
-        alarmList = globals.getAlarms(alarmViewModel);
+        //alarmList = globals.getAlarms(alarmViewModel);
 
         try {
             datagramSocket = new DatagramSocket(server_port);
@@ -100,11 +100,10 @@ public class UDPClient implements Runnable {
                         }
 
                         if(deviceViewModel.deviceExist(alarm.getAlarmName())){
-                            if (alarmViewModel.alarmExist(alarm.getAlarmName())) {
+                            if (!alarmViewModel.alarmExist(alarm.getAlarmName()) && alarm.getStatus() > 3) {
                                 alarmViewModel.insert(alarm);
-                            }else if(alarmViewModel.checkAlarmStatus(alarm.getAlarmName(), alarm.getStatus())){
-                                //TODO Ovde bi trebalo uraditi update
-                                alarmViewModel.update(alarm);
+                            }else if(alarmViewModel.alarmExist(alarm.getAlarmName()) && alarm.getStatus() < 4){
+                                alarmViewModel.deleteAlarm(alarm);
                             }
                         }
 

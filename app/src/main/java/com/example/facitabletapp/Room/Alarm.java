@@ -10,8 +10,9 @@ public class Alarm {
 
     @PrimaryKey(autoGenerate = true)
     private int alarmID;
-    private String rommID;
-    private String groupControler;
+
+    private String roomID;
+    private String groupController;
     private String group;
     private String alarmName;
     private int status;
@@ -27,12 +28,12 @@ public class Alarm {
         return alarmID;
     }
 
-    public String getRommID() {
-        return rommID;
+    public String getRoomID() {
+        return roomID;
     }
 
-    public String getGroupControler() {
-        return groupControler;
+    public String getGroupController() {
+        return groupController;
     }
 
     public String getGroup() {
@@ -67,12 +68,12 @@ public class Alarm {
         this.alarmID = alarmID;
     }
 
-    public void setRommID(String rommID) {
-        this.rommID = rommID;
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
 
-    public void setGroupControler(String groupControler) {
-        this.groupControler = groupControler;
+    public void setGroupController(String groupController) {
+        this.groupController = groupController;
     }
 
     public void setGroup(String group) {

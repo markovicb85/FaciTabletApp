@@ -104,7 +104,7 @@ public class UDPClient implements Runnable {
                                 alarmViewModel.insert(alarm);
                             }else if(alarmViewModel.checkAlarmStatus(alarm.getAlarmName(), alarm.getStatus())){
                                 //TODO Ovde bi trebalo uraditi update
-                                alarmViewModel.insert(alarm);
+                                alarmViewModel.update(alarm);
                             }
                         }
 

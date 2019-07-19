@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class AddDeviceFragment extends Fragment {
     private EditText etDeviceName;
     private CheckBox cbDeviceStatus;
     private Device device;
+    private Button btnSaveDevice;
 
     @Nullable
     @Override
@@ -39,6 +41,14 @@ public class AddDeviceFragment extends Fragment {
 
         etDeviceName = rootView.findViewById(R.id.et_add_device_name);
         cbDeviceStatus = rootView.findViewById(R.id.cb_device_status);
+        btnSaveDevice = rootView.findViewById(R.id.btn_save_device);
+
+        btnSaveDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveDevice();
+            }
+        });
 
         return rootView;
     }
@@ -53,6 +63,9 @@ public class AddDeviceFragment extends Fragment {
         }
 
         device = new Device(name, status);
+        deviceViewModel.insert(device);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new AddDeviceFragment()).commit();
     }
 
     @Override
@@ -66,9 +79,6 @@ public class AddDeviceFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.save_device:
                 saveDevice();
-                deviceViewModel.insert(device);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DeviceListFragment()).commit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

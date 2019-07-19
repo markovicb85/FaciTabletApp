@@ -24,10 +24,12 @@ import com.example.facitabletapp.Room.Alarm;
 import com.example.facitabletapp.Tools.UDPClient;
 import com.example.facitabletapp.ViewModel.AlarmViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmListFragment extends Fragment {
 
+    List<Alarm> newAlarmsList;
     private AlarmViewModel alarmViewModel;
     private UDPClient runnable;
 
@@ -36,7 +38,6 @@ public class AlarmListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
 
 
         View rootView = inflater.inflate(R.layout.fragment_alarm_list, container, false);
@@ -54,7 +55,9 @@ public class AlarmListFragment extends Fragment {
         alarmViewModel.getAllAlarms().observe(getActivity(), new Observer<List<Alarm>>() {
             @Override
             public void onChanged(@Nullable List<Alarm> alarms) {
-                alarmAdapter.setAlarms(alarms);
+                newAlarmsList = new ArrayList<>(alarms);
+                newAlarmsList.remove(0);
+                alarmAdapter.setAlarms(newAlarmsList);
             }
         });
 

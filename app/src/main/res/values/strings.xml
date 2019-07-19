@@ -14,7 +14,6 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="device_list">Device list</string>
     <string name="alarms">Alarms</string>
     <string name="delete_all_device">Delete all device</string>
     <string name="alarm">Alarm</string>
@@ -24,4 +23,11 @@
     <string name="add_port_number">Add port number</string>
     <string name="settings">Settings</string>
     <string name="save">Save</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="device_list">Device list</string>
+    <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="button_3">Button 3</string>
+    <string name="add_main_device">Add main device</string>
 </resources>
